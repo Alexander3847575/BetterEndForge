@@ -6,15 +6,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import mod.beethoven92.betterendforge.common.block.template.EndAnvilBlock;
-import net.minecraft.block.AnvilBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.state.IntegerProperty;
+import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 @Mixin(AnvilBlock.class)
 public class AnvilBlockMixin 
 {
 	@Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-	private static void be_damage(BlockState fallingState, CallbackInfoReturnable<BlockState> info) 
+	private static void be_damage(BlockState fallingState, CallbackInfoReturnable<BlockState> info)
 	{
 		if (fallingState.getBlock() instanceof EndAnvilBlock) 
 		{
